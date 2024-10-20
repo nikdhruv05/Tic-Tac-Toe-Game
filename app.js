@@ -30,9 +30,11 @@ boxes.forEach((box) => {
     box.addEventListener("click", () => {
         if(turnO){
             box.innerText = "O";
+            box.classList.add("o-mark");
             turnO = false;
         }else{
             box.innerText = "X";
+            box.classList.add("x-mark");
             turnO = true;
         }
         box.disabled = true;
@@ -84,7 +86,7 @@ const checkTie = () => {
         }
     }
     if(filledBoxes === 9) {
-        msg.innerText = `It's a draw!, Start Again!`;
+        msg.innerText = `It's a draw! Start Again!`;
         msgContainer.classList.remove("hide");
     }
 }

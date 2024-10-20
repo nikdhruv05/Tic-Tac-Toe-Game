@@ -69,6 +69,14 @@ body {
     gap: 4rem;
 }
 
+.o-mark {
+    color: blue; 
+}
+
+.x-mark {
+    color: red;
+}
+
 .hide {
     display: none;
 }
