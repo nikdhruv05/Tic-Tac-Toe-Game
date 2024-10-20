@@ -5,6 +5,8 @@ let newGameBtn = document.querySelector("#new-btn");
 let msgContainer = document.querySelector(".msg-container");
 let msg = document.querySelector("#msg");
 
+const endMessage = document.createElement('h2');
+
 let turnO = true;
 
 const winPatterns = [
@@ -42,7 +44,7 @@ boxes.forEach((box) => {
 
 const disableBoxes = () => {
     for(let box of boxes) 
-        box.disabled = true;
+    box.disabled = true;
 };
 
 const enableBoxes = () => {
@@ -67,10 +69,25 @@ const checkWinner = () => {
         if(pos1Val != "" && pos2Val != "" && pos3Val != ""){
             if(pos1Val === pos2Val && pos2Val === pos3Val){
                 showWinner(pos1Val);
+                return;
             }
         }
     }
+    checkTie(); 
 };
+
+const checkTie = () => {
+    let filledBoxes = 0;
+    for(let box of boxes) {
+        if(box.innerText !== "") {
+            filledBoxes++;
+        }
+    }
+    if(filledBoxes === 9) {
+        msg.innerText = `It's a draw!, Start Again!`;
+        msgContainer.classList.remove("hide");
+    }
+}
 
 newGameBtn.addEventListener("click", resetGame);
 resetBtn.addEventListener("click", resetGame);
